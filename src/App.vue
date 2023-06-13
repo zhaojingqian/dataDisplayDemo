@@ -1,10 +1,28 @@
 <script setup lang="ts">
-// import header from './components/Header.vue'
+// import { ref, onMounted, onBeforeUnmount } from 'vue'
+
 import appMain from './components/appMain.vue'
+
+// import { useHeightStore } from '@/stores/height'
+// const heightStore = useHeightStore()
+
+// const appContainer = ref<HTMLElement>()
+
+// onMounted(() => {
+//   window.addEventListener('resize', () => {
+//     heightStore.setAppContainerHeight(appContainer.value.offsetHeight)
+//   })
+// })
+
+// onBeforeUnmount(() => {
+//   window.removeEventListener('resize', () => {
+//     heightStore.setAppContainerHeight(appContainer.value.offsetHeight)
+//   })
+// })
 </script>
 
 <template>
-  <div class="app-container">
+  <div class="app-container" ref="appContainer">
     <el-container>
       <el-header> DATA DISPLAY DEMO </el-header>
       <el-main>
