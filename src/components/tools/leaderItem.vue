@@ -7,12 +7,20 @@ defineProps({
   image: {
     type: String,
     required: true
+  },
+  url: {
+    type: String,
+    required: true
   }
 })
+
+const openNewWindow = (url: string) => {
+  window.open(url, '_blank')
+}
 </script>
 
 <template>
-  <div class="leader-item">
+  <div class="leader-item" @click="openNewWindow(url)">
     <el-image
       class="leader-item-image"
       style="width: 50px; height: 50px; border-radius: 50%"
@@ -28,6 +36,7 @@ defineProps({
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
 }
 
 .leader-item-id {

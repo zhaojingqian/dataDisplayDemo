@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Position } from '@element-plus/icons-vue'
 defineProps({
   id: {
     type: String,
@@ -21,6 +22,10 @@ defineProps({
     required: true
   }
 })
+
+const openNewWindow = (url: string) => {
+  window.open(url, '_blank')
+}
 </script>
 
 <template>
@@ -36,7 +41,6 @@ defineProps({
     <div class="post-item-content" style="white-space: pre-line">
       {{ content }}
     </div>
-    <el-scrollbar>
     <div class="post-item-image-list">
       <template v-for="(img, idx) in images" :key="idx">
         <!-- <template v-if="idx<3"> -->
@@ -49,11 +53,16 @@ defineProps({
             fit="cover"
           >
           </el-image>
-          <!-- <div>{{ img }}</div> -->
         </template>
-      <!-- </template> -->
     </div>
-    </el-scrollbar>
+    <div class="post-item-foot">
+      <el-icon 
+        class="post-item-foot-position" 
+        @click="openNewWindow(url)"
+      >
+      <Position />
+    </el-icon>
+    </div>
   </div>
 </template>
 
@@ -100,5 +109,21 @@ defineProps({
   flex-wrap: wrap;
 
   gap: 30px
+}
+
+.post-item-foot {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items:end;
+  gap: 10px;
+  margin-right: 10px;
+}
+
+.post-item-foot-position {
+  font-size: 22px;
+  color: rgba(128, 128, 128, 0.723);
+
+  cursor: pointer;
 }
 </style>

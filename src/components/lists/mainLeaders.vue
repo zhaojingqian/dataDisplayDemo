@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import { useDataStore } from '@/stores/data'
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 
 import leaderItem from '../tools/leaderItem.vue'
 const store = useDataStore()
 
 const leaderData = computed(() => store.leaderData)
+
+onMounted(() => {
+  console.log('leaderData', leaderData.value)
+})
 </script>
 
 <template>
@@ -16,7 +20,7 @@ const leaderData = computed(() => store.leaderData)
         <div class="leaderlist-item" v-for="leader in leaderData" :key="leader.user_id">
           <!-- <div class="leaderlist-item-id">{{ leader.user_id }}</div>
         <el-image style="width: 50px; height: 50px" :src="leader.user_img" :fit="fit" /> -->
-          <leaderItem :id="leader.user_id" :image="leader.user_img" />
+          <leaderItem :id="leader.user_id" :image="leader.user_img" :url="leader.user_url"/>
         </div>
       </div>
     </el-scrollbar>
