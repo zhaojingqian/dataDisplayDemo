@@ -19,7 +19,7 @@ const keyDict = {
 
 const querySearch = async (keywords: string, type: string) => {
   console.log(keywords, type)
-  let urlString = 'http://192.168.43.156:5000/' + keyDict[type]
+  let urlString = 'http://127.0.0.1:5000/' + keyDict[type]
   console.log(urlString)
   await axios
     .post(urlString, { keywords: keywords })
