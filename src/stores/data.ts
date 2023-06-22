@@ -2,8 +2,8 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useDataStore = defineStore('data', () => {
-  const leaderData = ref({})
-  const postData = ref({})
+  const leaderData = ref(null)
+  const postData = ref(null)
 
   function setLeaderData(data: object) {
     leaderData.value = data

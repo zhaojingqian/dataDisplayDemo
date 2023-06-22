@@ -1,19 +1,15 @@
 <script setup lang="ts">
 import { useDataStore } from '@/stores/data'
-import { computed, onMounted } from 'vue'
+import { computed } from 'vue'
 
 import leaderItem from '../tools/leaderItem.vue'
 const store = useDataStore()
 
 const leaderData = computed(() => store.leaderData)
-
-onMounted(() => {
-  console.log('leaderData', leaderData.value)
-})
 </script>
 
 <template>
-  <div class="leaderlist">
+  <div class="leaderlist" v-show="leaderData">
     <div class="leaderlist-title">LEADERS</div>
     <el-scrollbar>
       <div class="leaderlist-items">

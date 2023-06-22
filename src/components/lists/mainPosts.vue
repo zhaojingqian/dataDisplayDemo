@@ -9,7 +9,7 @@ const postData = computed(() => store.postData)
 </script>
 
 <template>
-  <div class="postlist">
+  <div class="postlist" v-show="postData">
     <div class="postlist-title">POSTS</div>
     <el-scrollbar height="450px">
       <div class="postlist-items">
