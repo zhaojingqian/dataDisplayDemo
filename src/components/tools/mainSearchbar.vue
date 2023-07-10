@@ -3,11 +3,12 @@ import { ref } from 'vue'
 import { Search } from '@element-plus/icons-vue'
 
 import { useDataStore } from '@/stores/data'
+import { useI18n } from 'vue-i18n'
 
 import axios from 'axios'
 
 const store = useDataStore()
-
+const { t } = useI18n()
 const keywords = ref('')
 const type = ref('')
 
@@ -30,13 +31,13 @@ const querySearch = async (keywords: string, type: string) => {
     })
     .catch((err) => {
       console.log(err)
-    })
+  })
 
   // await axios
   //   .get('/static/leaders.json')
   //   .then((res) => {
   //     store.setLeaderData(res.data)
-  //     console.log(store.leaderData.length)
+  //     // console.log(store.leaderData.length)
   //   })
   //   .catch((err) => {
   //     console.log(err)
@@ -46,7 +47,7 @@ const querySearch = async (keywords: string, type: string) => {
   //   .get('/static/posts.json')
   //   .then((res) => {
   //     store.setPostData(res.data)
-  //     console.log(store.postData.length)
+  //     // console.log(store.postData.length)
   //   })
   //   .catch((err) => {
   //     console.log(err)
@@ -66,21 +67,17 @@ const querySearch = async (keywords: string, type: string) => {
 
 <template>
   <div class="searchbar">
-    <el-input v-model="keywords" placeholder="Search" class="searchbar-input">
+    <el-input v-model="keywords" :placeholder="$t('main.searchbar.searchPlaceholder')" class="searchbar-input">
       <template #prepend>
-        <el-select
-          v-model="type"
-          placeholder="Select"
-          class="searchbar-select"
-          style="width: 120px"
-        >
+        <el-select v-model=" type " :placeholder="$t('main.searchbar.selectPlaceholder')" class="searchbar-select" style="width: 120px">
           <el-option label="Twitter" value="1" />
           <el-option label="Facebook" value="2" />
           <el-option label="Reddit" value="3" />
         </el-select>
       </template>
       <template #append>
-        <el-button :icon="Search" :disabled="type==='' || keywords===''" @click="querySearch(keywords, type)" style="width: 60px">
+        <el-button :icon=" Search " :disabled=" type === '' || keywords === '' " @click="querySearch(keywords, type)"
+          style="width: 60px">
         </el-button>
       </template>
     </el-input>

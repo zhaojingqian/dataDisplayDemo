@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { useDataStore } from '@/stores/data'
 import { computed } from 'vue'
-
+import { useI18n } from 'vue-i18n'
 import leaderItem from '../tools/leaderItem.vue'
 const store = useDataStore()
-
+const { t } = useI18n()
 const leaderData = computed(() => store.leaderData)
 </script>
 
 <template>
   <div class="leaderlist" v-show="leaderData">
-    <div class="leaderlist-title">LEADERS</div>
+    <div class="leaderlist-title">{{$t('main.leaderboard.title')}}</div>
     <el-scrollbar>
       <div class="leaderlist-items">
         <div class="leaderlist-item" v-for="leader in leaderData" :key="leader.user_id">
@@ -37,7 +37,7 @@ const leaderData = computed(() => store.leaderData)
   /* 字体加粗 */
   font-weight: 100;
   /* 字体花体 */
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Times New Roman', '黑体', serif;
 
   border-bottom: solid 2px var(--el-menu-border-color);
 

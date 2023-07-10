@@ -2,7 +2,7 @@
 // import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 import appMain from './components/appMain.vue'
-
+import appHeader from './components/appHeader.vue'
 // import { useHeightStore } from '@/stores/height'
 // const heightStore = useHeightStore()
 
@@ -24,7 +24,10 @@ import appMain from './components/appMain.vue'
 <template>
   <div class="app-container" ref="appContainer">
     <el-container>
-      <el-header> DATA DISPLAY DEMO </el-header>
+      <!-- <el-header> DATA DISPLAY DEMO </el-header> -->
+      <el-header>
+        <appHeader />
+      </el-header>
       <el-main>
         <appMain />
       </el-main>
